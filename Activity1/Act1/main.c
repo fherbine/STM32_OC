@@ -1,13 +1,13 @@
 #include "stm32f10x.h"
-//#include "functions.h"
+#include "functions.h"
 
 int main(void){
 	int i;	
-//	static int observable;
+	static int observable;
 	
 	for(i=0;i<100000;i++){
-//		observable = function1(observable);
+		observable = function1(observable);
 	}
-//	function2();
+	function2();
 	return 0;
 }
