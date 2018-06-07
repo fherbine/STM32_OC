@@ -1,8 +1,9 @@
+int Locale;
+
 int	main(void)
 {
-	int Locale;
-	
-	Locale++;
+	while(1)
+		Locale++;
 	
 	return (0);
 }
