@@ -29,11 +29,14 @@ Project File Date:  08/11/2018
 Rebuild target 'Target 1'
 assembling startup_stm32f10x_md.s...
 compiling main.c...
-compiling system_stm32f10x.c...
+main.c(79): warning:  #111-D: statement is unreachable
+  	return (0);
+main.c: 1 warning, 0 errors
 compiling GPIO_STM32F10x.c...
+compiling system_stm32f10x.c...
 linking...
-Program Size: Code=648 RO-data=252 RW-data=0 ZI-data=1632  
-".\Objects\GPIO.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=744 RO-data=252 RW-data=0 ZI-data=1632  
+".\Objects\GPIO.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -67,10 +70,10 @@ Package Vendor: Keil
 
    * Component: Keil::Device:Startup:1.0.0
       Source file:   Device\Source\ARM\STM32F1xx_OPT.s
-      Source file:   Device\Source\ARM\startup_stm32f10x_md.s
       Source file:   Device\Source\system_stm32f10x.c
       Include file:  RTE_Driver\Config\RTE_Device.h
-Build Time Elapsed:  00:00:02
+      Source file:   Device\Source\ARM\startup_stm32f10x_md.s
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>
