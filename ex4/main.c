@@ -1,3 +1,5 @@
+#include <STM32f10x.h>
+
 typedef unsigned char		u8;
 typedef unsigned short	u16;
 typedef unsigned int		u32;
@@ -25,6 +27,17 @@ u32	portb_odr_status(void)
 	u32 value;
 	
 	value = *(u32 *)0x40010C0C; // Same for Output Data register (ODR) for GPIO port B
+	return (value);
+}
+
+
+/*	Same as port B IDR, with simple synthax and port A	*/
+
+u32 porta_idr_status_new(void)
+{
+	u32 value;
+	
+	value = GPIOA->IDR;
 	return (value);
 }
 
