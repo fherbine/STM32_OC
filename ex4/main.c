@@ -81,6 +81,23 @@ void	open_gpio_c10(void)
 	GPIOC->ODR |= (0x1 << 10);
 }
 
+void	open_close_gpio_c10(void)
+{
+	GPIOC->ODR ^= (0x1 << 10);
+}
+
+void	gpio_c13_config(void)
+{
+	GPIOC->CRH &= ~(0xF << 20);
+	GPIOC->CRH |= (0x8 << 20);
+}
+
+void	get_usr_action(void)
+{
+	if (!(GPIOC->IDR & (0x1 << 13)))
+		open_close_gpio_c10();
+}
+
 s32 	main(void)
 {
 	RCC->APB2ENR = RCC->APB2ENR | RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN; // mandatory
@@ -93,6 +110,7 @@ s32 	main(void)
 	
 	while (TRUE) {
 		basic_blink();
+		get_usr_action();
 	}
 	return (0);
 }
