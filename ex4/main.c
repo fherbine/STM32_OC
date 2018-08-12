@@ -36,7 +36,7 @@ u32	portb_odr_status(void)
 
 /*	Same as port B IDR, with simple synthax and port A	*/
 
-u32 porta_idr_status_new(void)
+u32 	porta_idr_status_new(void)
 {
 	u32 value;
 	
@@ -45,35 +45,54 @@ u32 porta_idr_status_new(void)
 }
 
 
-void gpio_c3_config(void)
+void 	gpio_c3_config(void)
 {
 	GPIOC->CRL = GPIOC->CRL & ~(0xF << 4*3);
 	GPIOC->CRL = GPIOC->CRL | (0x3 << 4*3);
 }
 
-void open_close_gpio_c3(void)
+void 	open_close_gpio_c3(void)
 {
 	GPIOC->ODR = GPIOC->ODR ^ (1 << 3);
 }
 
-void basic_wait(void)
+void 	basic_wait(void)
 {
-	u16 c = 0;
+	u32 c = 0;
 	
-	while (c < 0xFF)
+	while (c < 0xFFFFF)
 		c++;
 }
 
-s32 main(void)
+void 	basic_blink(void)
 {
-	RCC->APB2ENR = RCC->APB2ENR | RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN;
+		basic_wait();
+		open_close_gpio_c3();
+}
+
+void	gpio_c10_config(void)
+{
+	GPIOC->CRH = GPIOC->CRH & ~(0xF << 8);
+	GPIOC->CRH = GPIOC->CRH | (0x1 << 8);
+}
+
+void	open_gpio_c10(void)
+{
+	GPIOC->ODR |= (0x1 << 10);
+}
+
+s32 	main(void)
+{
+	RCC->APB2ENR = RCC->APB2ENR | RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN; // mandatory
 	
 	
 	gpio_c3_config();
+	gpio_c10_config();
 	open_close_gpio_c3();
+	open_gpio_c10();
 	
 	while (TRUE) {
-	open_close_gpio_c3();
+		basic_blink();
 	}
 	return (0);
 }
