@@ -17,6 +17,11 @@ void	config_gpio_c3(void)
 	GPIOC->CRL |= (0x3 << 12);
 }
 
+void	open_close_c3(void)
+{
+	GPIOC->ODR ^= (0x1 << 3);
+}
+
 void	config_usr_but(void)
 {
 	GPIOC->CRH &= ~(0xF << 20);
@@ -41,6 +46,7 @@ void	start_tim2(void)
 
 s32		main(void)
 {
+	u8 start = 0;
 	RCC->APB2ENR = RCC->APB2ENR | RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN; // mandatory to use GPIOs
 	RCC->APB1ENR |= RCC_APB1ENR_TIM2EN; // mandatory to use timer2
 	
@@ -52,7 +58,13 @@ s32		main(void)
 	
 	while (TRUE)
 	{
-		__nop();
+		if (!(GPIOC->IDR & (0x1 << 13)))
+			start = (start)? 0 : 1;
+		if (start && (TIM2->SR & TIM_SR_UIF)) // If an overflow occured
+		{
+			open_close_c3();
+			TIM2->SR &= ~TIM_SR_UIF;
+		}
 	}
 	return(0);
 }
