@@ -23,6 +23,22 @@ void	config_usr_but(void)
 	GPIOC->CRH |= (0x8 << 20);
 }
 
+void	init_tim2(u32 reload, u32 prescaler)
+{
+	TIM2->ARR = reload;
+	TIM2->PSC = prescaler;
+}
+
+void	init_1sec_tim(void)
+{
+	init_tim2(9999, 7199);
+}
+
+void	start_tim2(void)
+{
+	TIM2->CR1 |= 0x1; // we can write TIM2->CR1 |= TIM1_CR1_CEN instead
+}
+
 s32		main(void)
 {
 	RCC->APB2ENR = RCC->APB2ENR | RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN; // mandatory to use GPIOs
@@ -30,6 +46,9 @@ s32		main(void)
 	
 	config_gpio_c3();
 	config_usr_but();
+	
+	init_1sec_tim();
+	start_tim2();
 	
 	while (TRUE)
 	{
