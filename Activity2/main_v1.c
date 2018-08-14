@@ -26,7 +26,8 @@ void change_status_gpio(GPIO_TypeDef *GPIO, int n);
 Varibales globales
  *****************************************************************/
 
-int pressed = 0;
+int pressed = 0; // Variable global pour savoir si le bouton a ete presse
+int led = 0; // Variable pour savoir quand la led est allume pour 300 ms
 
 /*****************************************************************
 MAIN
@@ -107,6 +108,7 @@ void configure_timer(TIM_TypeDef *TIM, int psc, int arr) {
 	RCC->APB1ENR |= (0xF << 0); // Activation des horloges pour les timers 2 a 5
 	TIM->ARR = arr;   // on affecte l'autoreload passe en argument au registre du timer concerne
 	TIM->PSC = psc;		// meme chose pour le prescaler
+	TIM->DIER |= TIM_DIER_UIE; // On active les interrupts pour le timer passe en argument
 }
 
 /**
@@ -149,8 +151,9 @@ void TIM2_IRQHandler(void)
 	if (!pressed)
 	{
 		stop_timer(TIM2);        // on arrete le timer 2
-		configure_timer(TIM3, 7199, 299); // on configure le timer 3 pour les 300ms
-		set_gpio(GPIOA, 5); // oon allume la LED tant que le flag  du timer 3 n'est pas mis a jour
+		configure_timer(TIM3, 7199, 2999); // on configure le timer 3 pour les 300ms
+		set_gpio(GPIOA, 5); // on allume la LED tant que le flag  du timer 3 n'est pas mis a jour
+		led = 1;						// on assigne la variable globale pour signaler que la led est allume
 		start_timer(TIM3); // on active le timer 3
 	}
 	else
@@ -162,6 +165,7 @@ void TIM3_IRQHandler(void)
 	TIM3->SR &= ~TIM_SR_UIF; // on clear le flag du timer 3
 	stop_timer(TIM3); // on arrete le timer
 	reset_gpio(GPIOA, 5); // on etteint la LED
+	led = 0;							// On signal que la led est eteinte
 	if (pressed)
 		configure_timer(TIM2, 7199, 2499); // Configuration du timer 2 si l'utilisateur a appuye sur le bouton 
 	else
@@ -172,7 +176,8 @@ void TIM3_IRQHandler(void)
 void EXTI15_10_IRQHandler(void)
 {
 	EXTI->PR |= (0x1 << 13); //On clear le flag de l'interruption externe ligne 13 en le mettant a 1
-	pressed = 1; // On affecte 1 a la variable globale pressed pour signaler un appuye sur le bouton
+	if (!pressed)
+		pressed = (led) ? 1 : 0; // On affecte 1 a la variable globale pressed pour signaler un appuye sur le bouton
 }
 	
 

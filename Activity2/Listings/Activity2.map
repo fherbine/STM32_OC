@@ -16,7 +16,7 @@ Section Cross References
     main_v1.o(i.TIM3_IRQHandler) refers to main_v1.o(i.configure_timer) for configure_timer
     main_v1.o(i.TIM3_IRQHandler) refers to main_v1.o(i.rand) for rand
     main_v1.o(i.TIM3_IRQHandler) refers to main_v1.o(i.start_timer) for start_timer
-    main_v1.o(i.TIM3_IRQHandler) refers to main_v1.o(.data) for pressed
+    main_v1.o(i.TIM3_IRQHandler) refers to main_v1.o(.data) for led
     main_v1.o(i.main) refers to main_v1.o(i.configure_gpio_pa5) for configure_gpio_pa5
     main_v1.o(i.main) refers to main_v1.o(i.configure_gpio_pc13) for configure_gpio_pc13
     main_v1.o(i.main) refers to main_v1.o(i.rand) for rand
@@ -283,32 +283,32 @@ Image Symbol Table
     .text                                    0x08000240   Section        2  use_no_semi.o(.text)
     .text                                    0x08000242   Section        0  indicate_semi.o(.text)
     i.EXTI15_10_IRQHandler                   0x08000244   Section        0  main_v1.o(i.EXTI15_10_IRQHandler)
-    i.SetSysClock                            0x08000260   Section        0  system_stm32f10x.o(i.SetSysClock)
-    SetSysClock                              0x08000261   Thumb Code     8  system_stm32f10x.o(i.SetSysClock)
-    i.SetSysClockTo72                        0x08000268   Section        0  system_stm32f10x.o(i.SetSysClockTo72)
-    SetSysClockTo72                          0x08000269   Thumb Code   214  system_stm32f10x.o(i.SetSysClockTo72)
-    i.SystemInit                             0x08000348   Section        0  system_stm32f10x.o(i.SystemInit)
-    i.TIM2_IRQHandler                        0x080003a8   Section        0  main_v1.o(i.TIM2_IRQHandler)
-    i.TIM3_IRQHandler                        0x080003fc   Section        0  main_v1.o(i.TIM3_IRQHandler)
-    i.change_status_gpio                     0x08000464   Section        0  main_v1.o(i.change_status_gpio)
-    i.configure_gpio_pa5                     0x08000470   Section        0  main_v1.o(i.configure_gpio_pa5)
-    i.configure_gpio_pc13                    0x0800049c   Section        0  main_v1.o(i.configure_gpio_pc13)
-    i.configure_it                           0x08000510   Section        0  main_v1.o(i.configure_it)
-    i.configure_timer                        0x0800057c   Section        0  main_v1.o(i.configure_timer)
-    i.main                                   0x08000594   Section        0  main_v1.o(i.main)
-    i.rand                                   0x080005c8   Section        0  main_v1.o(i.rand)
-    i.reset_gpio                             0x08000604   Section        0  main_v1.o(i.reset_gpio)
-    i.set_gpio                               0x08000610   Section        0  main_v1.o(i.set_gpio)
-    i.start_timer                            0x0800061c   Section        0  main_v1.o(i.start_timer)
-    i.stop_timer                             0x08000626   Section        0  main_v1.o(i.stop_timer)
-    .data                                    0x20000000   Section        8  main_v1.o(.data)
-    randomseed                               0x20000004   Data           4  main_v1.o(.data)
-    .bss                                     0x20000008   Section       96  libspace.o(.bss)
-    HEAP                                     0x20000068   Section      512  startup_stm32f10x_md.o(HEAP)
-    Heap_Mem                                 0x20000068   Data         512  startup_stm32f10x_md.o(HEAP)
-    STACK                                    0x20000268   Section     1024  startup_stm32f10x_md.o(STACK)
-    Stack_Mem                                0x20000268   Data        1024  startup_stm32f10x_md.o(STACK)
-    __initial_sp                             0x20000668   Data           0  startup_stm32f10x_md.o(STACK)
+    i.SetSysClock                            0x08000274   Section        0  system_stm32f10x.o(i.SetSysClock)
+    SetSysClock                              0x08000275   Thumb Code     8  system_stm32f10x.o(i.SetSysClock)
+    i.SetSysClockTo72                        0x0800027c   Section        0  system_stm32f10x.o(i.SetSysClockTo72)
+    SetSysClockTo72                          0x0800027d   Thumb Code   214  system_stm32f10x.o(i.SetSysClockTo72)
+    i.SystemInit                             0x0800035c   Section        0  system_stm32f10x.o(i.SystemInit)
+    i.TIM2_IRQHandler                        0x080003bc   Section        0  main_v1.o(i.TIM2_IRQHandler)
+    i.TIM3_IRQHandler                        0x08000418   Section        0  main_v1.o(i.TIM3_IRQHandler)
+    i.change_status_gpio                     0x0800048c   Section        0  main_v1.o(i.change_status_gpio)
+    i.configure_gpio_pa5                     0x08000498   Section        0  main_v1.o(i.configure_gpio_pa5)
+    i.configure_gpio_pc13                    0x080004c4   Section        0  main_v1.o(i.configure_gpio_pc13)
+    i.configure_it                           0x08000538   Section        0  main_v1.o(i.configure_it)
+    i.configure_timer                        0x080005a4   Section        0  main_v1.o(i.configure_timer)
+    i.main                                   0x080005c4   Section        0  main_v1.o(i.main)
+    i.rand                                   0x080005f8   Section        0  main_v1.o(i.rand)
+    i.reset_gpio                             0x08000634   Section        0  main_v1.o(i.reset_gpio)
+    i.set_gpio                               0x08000640   Section        0  main_v1.o(i.set_gpio)
+    i.start_timer                            0x0800064c   Section        0  main_v1.o(i.start_timer)
+    i.stop_timer                             0x08000656   Section        0  main_v1.o(i.stop_timer)
+    .data                                    0x20000000   Section       12  main_v1.o(.data)
+    randomseed                               0x20000008   Data           4  main_v1.o(.data)
+    .bss                                     0x2000000c   Section       96  libspace.o(.bss)
+    HEAP                                     0x20000070   Section      512  startup_stm32f10x_md.o(HEAP)
+    Heap_Mem                                 0x20000070   Data         512  startup_stm32f10x_md.o(HEAP)
+    STACK                                    0x20000270   Section     1024  startup_stm32f10x_md.o(STACK)
+    Stack_Mem                                0x20000270   Data        1024  startup_stm32f10x_md.o(STACK)
+    __initial_sp                             0x20000670   Data           0  startup_stm32f10x_md.o(STACK)
 
     Global Symbols
 
@@ -458,26 +458,27 @@ Image Symbol Table
     __I$use$semihosting                      0x08000241   Thumb Code     0  use_no_semi.o(.text)
     __use_no_semihosting_swi                 0x08000241   Thumb Code     2  use_no_semi.o(.text)
     __semihosting_library_function           0x08000243   Thumb Code     0  indicate_semi.o(.text)
-    EXTI15_10_IRQHandler                     0x08000245   Thumb Code    20  main_v1.o(i.EXTI15_10_IRQHandler)
-    SystemInit                               0x08000349   Thumb Code    78  system_stm32f10x.o(i.SystemInit)
-    TIM2_IRQHandler                          0x080003a9   Thumb Code    70  main_v1.o(i.TIM2_IRQHandler)
-    TIM3_IRQHandler                          0x080003fd   Thumb Code    92  main_v1.o(i.TIM3_IRQHandler)
-    change_status_gpio                       0x08000465   Thumb Code    12  main_v1.o(i.change_status_gpio)
-    configure_gpio_pa5                       0x08000471   Thumb Code    36  main_v1.o(i.configure_gpio_pa5)
-    configure_gpio_pc13                      0x0800049d   Thumb Code   104  main_v1.o(i.configure_gpio_pc13)
-    configure_it                             0x08000511   Thumb Code    98  main_v1.o(i.configure_it)
-    configure_timer                          0x0800057d   Thumb Code    20  main_v1.o(i.configure_timer)
-    main                                     0x08000595   Thumb Code    52  main_v1.o(i.main)
-    rand                                     0x080005c9   Thumb Code    52  main_v1.o(i.rand)
-    reset_gpio                               0x08000605   Thumb Code    12  main_v1.o(i.reset_gpio)
-    set_gpio                                 0x08000611   Thumb Code    12  main_v1.o(i.set_gpio)
-    start_timer                              0x0800061d   Thumb Code    10  main_v1.o(i.start_timer)
-    stop_timer                               0x08000627   Thumb Code    10  main_v1.o(i.stop_timer)
-    Region$$Table$$Base                      0x08000630   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08000650   Number         0  anon$$obj.o(Region$$Table)
+    EXTI15_10_IRQHandler                     0x08000245   Thumb Code    36  main_v1.o(i.EXTI15_10_IRQHandler)
+    SystemInit                               0x0800035d   Thumb Code    78  system_stm32f10x.o(i.SystemInit)
+    TIM2_IRQHandler                          0x080003bd   Thumb Code    76  main_v1.o(i.TIM2_IRQHandler)
+    TIM3_IRQHandler                          0x08000419   Thumb Code    98  main_v1.o(i.TIM3_IRQHandler)
+    change_status_gpio                       0x0800048d   Thumb Code    12  main_v1.o(i.change_status_gpio)
+    configure_gpio_pa5                       0x08000499   Thumb Code    36  main_v1.o(i.configure_gpio_pa5)
+    configure_gpio_pc13                      0x080004c5   Thumb Code   104  main_v1.o(i.configure_gpio_pc13)
+    configure_it                             0x08000539   Thumb Code    98  main_v1.o(i.configure_it)
+    configure_timer                          0x080005a5   Thumb Code    28  main_v1.o(i.configure_timer)
+    main                                     0x080005c5   Thumb Code    52  main_v1.o(i.main)
+    rand                                     0x080005f9   Thumb Code    52  main_v1.o(i.rand)
+    reset_gpio                               0x08000635   Thumb Code    12  main_v1.o(i.reset_gpio)
+    set_gpio                                 0x08000641   Thumb Code    12  main_v1.o(i.set_gpio)
+    start_timer                              0x0800064d   Thumb Code    10  main_v1.o(i.start_timer)
+    stop_timer                               0x08000657   Thumb Code    10  main_v1.o(i.stop_timer)
+    Region$$Table$$Base                      0x08000660   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08000680   Number         0  anon$$obj.o(Region$$Table)
     pressed                                  0x20000000   Data           4  main_v1.o(.data)
-    __libspace_start                         0x20000008   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x20000068   Data           0  libspace.o(.bss)
+    led                                      0x20000004   Data           4  main_v1.o(.data)
+    __libspace_start                         0x2000000c   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x2000006c   Data           0  libspace.o(.bss)
 
 
 
@@ -487,9 +488,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000189
 
-  Load Region LR_1 (Base: 0x08000000, Size: 0x00000658, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x08000000, Size: 0x0000068c, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00000650, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00000680, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -551,40 +552,41 @@ Memory Map of the image
     0x08000240   0x08000240   0x00000002   Code   RO          347    .text               c_w.l(use_no_semi.o)
     0x08000242   0x08000242   0x00000000   Code   RO          349    .text               c_w.l(indicate_semi.o)
     0x08000242   0x08000242   0x00000002   PAD
-    0x08000244   0x08000244   0x0000001c   Code   RO            4    i.EXTI15_10_IRQHandler  main_v1.o
-    0x08000260   0x08000260   0x00000008   Code   RO          200    i.SetSysClock       system_stm32f10x.o
-    0x08000268   0x08000268   0x000000e0   Code   RO          201    i.SetSysClockTo72   system_stm32f10x.o
-    0x08000348   0x08000348   0x00000060   Code   RO          203    i.SystemInit        system_stm32f10x.o
-    0x080003a8   0x080003a8   0x00000054   Code   RO            5    i.TIM2_IRQHandler   main_v1.o
-    0x080003fc   0x080003fc   0x00000068   Code   RO            6    i.TIM3_IRQHandler   main_v1.o
-    0x08000464   0x08000464   0x0000000c   Code   RO            7    i.change_status_gpio  main_v1.o
-    0x08000470   0x08000470   0x0000002c   Code   RO            8    i.configure_gpio_pa5  main_v1.o
-    0x0800049c   0x0800049c   0x00000074   Code   RO            9    i.configure_gpio_pc13  main_v1.o
-    0x08000510   0x08000510   0x0000006c   Code   RO           10    i.configure_it      main_v1.o
-    0x0800057c   0x0800057c   0x00000018   Code   RO           11    i.configure_timer   main_v1.o
-    0x08000594   0x08000594   0x00000034   Code   RO           12    i.main              main_v1.o
-    0x080005c8   0x080005c8   0x0000003c   Code   RO           13    i.rand              main_v1.o
-    0x08000604   0x08000604   0x0000000c   Code   RO           14    i.reset_gpio        main_v1.o
-    0x08000610   0x08000610   0x0000000c   Code   RO           15    i.set_gpio          main_v1.o
-    0x0800061c   0x0800061c   0x0000000a   Code   RO           16    i.start_timer       main_v1.o
-    0x08000626   0x08000626   0x0000000a   Code   RO           17    i.stop_timer        main_v1.o
-    0x08000630   0x08000630   0x00000020   Data   RO          402    Region$$Table       anon$$obj.o
+    0x08000244   0x08000244   0x00000030   Code   RO            4    i.EXTI15_10_IRQHandler  main_v1.o
+    0x08000274   0x08000274   0x00000008   Code   RO          200    i.SetSysClock       system_stm32f10x.o
+    0x0800027c   0x0800027c   0x000000e0   Code   RO          201    i.SetSysClockTo72   system_stm32f10x.o
+    0x0800035c   0x0800035c   0x00000060   Code   RO          203    i.SystemInit        system_stm32f10x.o
+    0x080003bc   0x080003bc   0x0000005c   Code   RO            5    i.TIM2_IRQHandler   main_v1.o
+    0x08000418   0x08000418   0x00000074   Code   RO            6    i.TIM3_IRQHandler   main_v1.o
+    0x0800048c   0x0800048c   0x0000000c   Code   RO            7    i.change_status_gpio  main_v1.o
+    0x08000498   0x08000498   0x0000002c   Code   RO            8    i.configure_gpio_pa5  main_v1.o
+    0x080004c4   0x080004c4   0x00000074   Code   RO            9    i.configure_gpio_pc13  main_v1.o
+    0x08000538   0x08000538   0x0000006c   Code   RO           10    i.configure_it      main_v1.o
+    0x080005a4   0x080005a4   0x00000020   Code   RO           11    i.configure_timer   main_v1.o
+    0x080005c4   0x080005c4   0x00000034   Code   RO           12    i.main              main_v1.o
+    0x080005f8   0x080005f8   0x0000003c   Code   RO           13    i.rand              main_v1.o
+    0x08000634   0x08000634   0x0000000c   Code   RO           14    i.reset_gpio        main_v1.o
+    0x08000640   0x08000640   0x0000000c   Code   RO           15    i.set_gpio          main_v1.o
+    0x0800064c   0x0800064c   0x0000000a   Code   RO           16    i.start_timer       main_v1.o
+    0x08000656   0x08000656   0x0000000a   Code   RO           17    i.stop_timer        main_v1.o
+    0x08000660   0x08000660   0x00000020   Data   RO          402    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08000650, Size: 0x00000008, Max: 0xffffffff, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x20000000   0x08000650   0x00000008   Data   RW           18    .data               main_v1.o
-
-
-    Execution Region ER_ZI (Exec base: 0x20000008, Load base: 0x08000658, Size: 0x00000660, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08000680, Size: 0x0000000c, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000008        -       0x00000060   Zero   RW          276    .bss                c_w.l(libspace.o)
-    0x20000068        -       0x00000200   Zero   RW          191    HEAP                startup_stm32f10x_md.o
-    0x20000268        -       0x00000400   Zero   RW          190    STACK               startup_stm32f10x_md.o
+    0x20000000   0x08000680   0x0000000c   Data   RW           18    .data               main_v1.o
+
+
+    Execution Region ER_ZI (Exec base: 0x2000000c, Load base: 0x0800068c, Size: 0x00000664, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x2000000c        -       0x00000060   Zero   RW          276    .bss                c_w.l(libspace.o)
+    0x2000006c   0x0800068c   0x00000004   PAD
+    0x20000070        -       0x00000200   Zero   RW          191    HEAP                startup_stm32f10x_md.o
+    0x20000270        -       0x00000400   Zero   RW          190    STACK               startup_stm32f10x_md.o
 
 
 ==============================================================================
@@ -594,12 +596,12 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       676         76          0          8          0     212927   main_v1.o
+       724         88          0         12          0     212979   main_v1.o
         64         26        236          0       1536        808   startup_stm32f10x_md.o
        328         28          0          0          0       2065   system_stm32f10x.o
 
     ----------------------------------------------------------------------
-      1068        130        268          8       1536     215800   Object Totals
+      1116        142        268         12       1536     215852   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          0          0          0          0          0          0   (incl. Padding)
 
@@ -629,8 +631,8 @@ Image component sizes
          2          0          0          0          0         68   use_no_semi.o
 
     ----------------------------------------------------------------------
-       280         16          0          0         96        584   Library Totals
-         8          0          0          0          0          0   (incl. Padding)
+       280         16          0          0        100        584   Library Totals
+         8          0          0          0          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -639,7 +641,7 @@ Image component sizes
        272         16          0          0         96        584   c_w.l
 
     ----------------------------------------------------------------------
-       280         16          0          0         96        584   Library Totals
+       280         16          0          0        100        584   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -648,15 +650,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      1348        146        268          8       1632     215496   Grand Totals
-      1348        146        268          8       1632     215496   ELF Image Totals
-      1348        146        268          8          0          0   ROM Totals
+      1396        158        268         12       1636     215548   Grand Totals
+      1396        158        268         12       1636     215548   ELF Image Totals
+      1396        158        268         12          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 1616 (   1.58kB)
-    Total RW  Size (RW Data + ZI Data)              1640 (   1.60kB)
-    Total ROM Size (Code + RO Data + RW Data)       1624 (   1.59kB)
+    Total RO  Size (Code + RO Data)                 1664 (   1.63kB)
+    Total RW  Size (RW Data + ZI Data)              1648 (   1.61kB)
+    Total ROM Size (Code + RO Data + RW Data)       1676 (   1.64kB)
 
 ==============================================================================
 
