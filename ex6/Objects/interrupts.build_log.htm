@@ -30,12 +30,12 @@ Rebuild target 'Target 1'
 assembling startup_stm32f10x_md.s...
 compiling system_stm32f10x.c...
 compiling main.c...
-main.c(84): warning:  #111-D: statement is unreachable
+main.c(92): warning:  #111-D: statement is unreachable
   	return (0);
 main.c: 1 warning, 0 errors
 compiling GPIO_STM32F10x.c...
 linking...
-Program Size: Code=1064 RO-data=268 RW-data=4 ZI-data=1636  
+Program Size: Code=1084 RO-data=268 RW-data=4 ZI-data=1636  
 ".\Objects\interrupts.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -65,15 +65,15 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.1.1
 
    * Component: Keil::Device:GPIO:1.3
-      Source file:   RTE_Driver\GPIO_STM32F10x.c
       Include file:  RTE_Driver\GPIO_STM32F10x.h
+      Source file:   RTE_Driver\GPIO_STM32F10x.c
 
    * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
-      Source file:   Device\Source\system_stm32f10x.c
       Include file:  RTE_Driver\Config\RTE_Device.h
       Source file:   Device\Source\ARM\startup_stm32f10x_md.s
-Build Time Elapsed:  00:00:01
+      Source file:   Device\Source\system_stm32f10x.c
+      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

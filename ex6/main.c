@@ -26,19 +26,26 @@ void	open_close_gpio_c3(void)
 
 void	init_usr_but(void)
 {
-	GPIOC->CRH &= ~(0xF << 20);
-	GPIOC->CRH |= (0x8 << 20);
+	//GPIOC->CRH &= ~(0xF << 20);
+	//GPIOC->CRH |= (0x4 << 20);
 	
-	EXTI->RTSR |= (0x1 << 3);
-	EXTI->SWIER |= (0x1 << 3);
+	AFIO->EXTICR[3] &= ~(0xf << 4); // Clearing AFIO External interupt control register page 3 (pins 12 to 15)
+	AFIO->EXTICR[3] |= (0x2 << 4); // setting external interrupt for GPIO 13 port C
 	
-	NVIC->ISER[0] |= (0x1 << 9);
-	NVIC->IP[9] |= (7 << 4);
+	EXTI->RTSR &= ~(0x1 << 13); // Disable interrupt on rising edges
+	EXTI->FTSR |= (0x1 << 13); // Enable interrupt on falling edges
+	EXTI->IMR |= (0x1 << 13); // interrupt request line 13 is not masked
+	EXTI->EMR |= (0x1 << 13); // event request line 13 is not masked 
+	EXTI->SWIER &= ~(0x1 << 13); // Disable software interrupt on line 13
+	
+	NVIC->ISER[1] |= (0x1 << 8); // Activating EXTI10 to 15 interrupts
+	NVIC->IP[40] |= (7 << 4); // Setting priority
+	
 }
 
-void EXTI3_IRQHandler(void)
+void EXTI15_10_IRQHandler(void)
 {
-	EXTI->PR &= ~(0x1 << 3);
+	EXTI->PR |= (0x1 << 13); // clearing flag
 	blink ^= 1;
 }
 
@@ -72,13 +79,14 @@ s32		main(void)
 {
  	RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;
 	RCC->APB2ENR |= RCC_APB2ENR_IOPCEN;
+	RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
 	
 	init_all();
 	
 	while(TRUE)
 	{
-		if (!(GPIOC->IDR & (0x1 << 13)))
-			blink ^= 1;
+	//	if (!(GPIOC->IDR & (0x1 << 13)))
+	//		blink ^= 1;
 		__nop();
 	}
 	return (0);
