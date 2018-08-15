@@ -16,5 +16,10 @@ typedef signed char			s8;
 typedef signed short		s16;
 typedef signed int 			s32;
 
+void		init_uart1_9600(void);
+void		uart1_send_byte(u8 data);
+void 		print_alpha(void);
+
+s32			configure_gpio_alt_push_pull(GPIO_TypeDef *gpio, u8 pin);
 
 #endif
