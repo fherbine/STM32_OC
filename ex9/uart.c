@@ -81,5 +81,5 @@ void			u_putstr(USART_TypeDef *USART, u8 *str)
 void			u_putendl(USART_TypeDef *USART, u8 *str)
 {
 	u_putstr(USART, str);
-	u_putchar(USART, '\n');
+	u_putstr(USART, "\r\n");
 }
