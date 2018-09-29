@@ -12,5 +12,6 @@ s32 main(void)
 {
 	RCC->APB1ENR |= RCC_APB1ENR_TIM3EN; // Enable clock for timer 3
 	TIM3->PSC = 0;
+	TIM3->ARR = ;
 	return (0);
 }
